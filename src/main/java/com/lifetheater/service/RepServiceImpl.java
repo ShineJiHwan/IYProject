@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.lifetheater.dao.RepDAO;
 import com.lifetheater.vo.FRepContVO;
@@ -15,10 +16,10 @@ public class RepServiceImpl implements RepService {
 	@Autowired
 	private RepDAO repDao;
 
+
 	@Override
 	public void repInsert(FReplyVO re) {
 		this.repDao.repInsert(re);
-		
 	}
 
 	@Override
@@ -26,10 +27,11 @@ public class RepServiceImpl implements RepService {
 		return this.repDao.selectFreCont(fb_num);
 	}
 
-	@Override
-	public int totalRep(int fb_num) {
-		return this.repDao.totalRep(fb_num);
-	}
+	
+	  @Override public int totalRep(int fb_num) {
+		  return this.repDao.totalRep(fb_num); 
+	  }
+	 
 
 	@Override
 	public void rep_repInsert(FReplyVO re) {

@@ -20,7 +20,7 @@ public interface BoardService{
 
 	FBoardContVO selectFBCont(int fb_num);
 
-	void fHitUp(int fb_num);
+	//void fHitUp(int fb_num);
 
 
 
@@ -57,9 +57,9 @@ public interface BoardService{
 
 		PBoardContVO selectPBCont(int pb_num);
 
-		void pHitUp(int pb_num);
+		//void pHitUp(int pb_num);
 		
-		void nHitUp(int nb_num);
+		//void nHitUp(int nb_num);
 
 		FBoardVO selectFCont(int fb_num);
 

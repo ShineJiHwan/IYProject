@@ -120,7 +120,7 @@ public class IY_board {
 			 System.out.println("최신순");
 		}
 		FBoardContVO fbCont = this.Service.selectFBCont(fb_num);
-		this.Service.fHitUp(fb_num);
+		//this.Service.fHitUp(fb_num);
 		int totalRep = this.repService.totalRep(fb_num);
 		m.addAttribute("fbCont",fbCont);
 		m.addAttribute("frContList", frContList);
@@ -199,7 +199,7 @@ public class IY_board {
 	}
 	@GetMapping("IY_board_pcont")
 	public String board_pcont(int pb_num,Model m) {
-		this.Service.pHitUp(pb_num);
+		//this.Service.pHitUp(pb_num);
 		PBoardContVO pbCont = this.Service.selectPBCont(pb_num);
 		m.addAttribute("pbCont",pbCont);
 		return "board/board_pcont";
@@ -271,7 +271,7 @@ public class IY_board {
 	}
 	@GetMapping("IY_board_ncont")
 	public String board_ncont(int nb_num,Model m){
-		this.Service.nHitUp(nb_num);
+		//this.Service.nHitUp(nb_num);
 		NBoardContVO nbCont = this.Service.selectNBCont(nb_num);
 		m.addAttribute("nbCont",nbCont);
 		return "board/board_ncont";

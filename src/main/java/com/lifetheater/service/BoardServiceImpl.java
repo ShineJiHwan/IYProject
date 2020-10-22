@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.lifetheater.dao.BoardDAO;
 import com.lifetheater.vo.FBoardContVO;
@@ -44,18 +45,21 @@ public class BoardServiceImpl implements BoardService {
 			this.BoardDao.nBoardInsert(nBoardVO);
 		
 	}
-
+	
+	@Transactional
 	@Override
 	public FBoardContVO selectFBCont(int fb_num) {
-		return this.BoardDao.selectFBCont(fb_num);
+		FBoardContVO fb =  this.BoardDao.selectFBCont(fb_num);
+		this.BoardDao.fHitUp(fb_num);
+		return fb;
 	}
 
+	/*
 	@Override
 	public void fHitUp(int fb_num) {
 		this.BoardDao.fHitUp(fb_num);
-		
 	}
-
+	 */
 	@Override
 	public void fBoardUpdate(FBoardVO fBoardVO) {
 		
@@ -132,25 +136,32 @@ public class BoardServiceImpl implements BoardService {
 		this.BoardDao.nBoardDelete(nBoardVO);
 	}
 
+	@Transactional
 	@Override
 	public NBoardContVO selectNBCont(int nb_num) {
-		return this.BoardDao.selectNBCont(nb_num);
+		NBoardContVO nb =this.BoardDao.selectNBCont(nb_num);
+		this.BoardDao.nHitUp(nb_num);
+		return nb;
 	}
-
-	@Override
-	public PBoardContVO selectPBCont(int pb_num) {
-		return this.BoardDao.selectPBCont(pb_num);
-	}
-
-	@Override
-	public void pHitUp(int pb_num) {
-		this.BoardDao.pHitUp(pb_num);
-	}
-	
+/*
 	@Override
 	public void nHitUp(int nb_num) {
 		this.BoardDao.nHitUp(nb_num);
 	}
+*/
+	@Transactional
+	@Override
+	public PBoardContVO selectPBCont(int pb_num) {
+		PBoardContVO pb=this.BoardDao.selectPBCont(pb_num);
+		this.BoardDao.pHitUp(pb_num);
+		return pb;
+	}
+/*
+	@Override
+	public void pHitUp(int pb_num) {
+		this.BoardDao.pHitUp(pb_num);
+	}
+*/
 
 	@Override
 	public FBoardVO selectFCont(int fb_num) {
